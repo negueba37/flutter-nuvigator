@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj/router_generator.dart';
 import 'package:proj/screens/home_screen.dart';
 
 void main() {
@@ -6,16 +7,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
-  Widget build(BuildContext context)  {
-
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Montserrat',
       ),
-      home: HomeScreen(),
+      initialRoute: 'home',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

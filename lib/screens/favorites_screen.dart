@@ -29,8 +29,7 @@ class FavoritesScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.darkGrey
-                    ),
+                        color: AppColors.darkGrey),
                   ),
                   IconButton(
                     color: Colors.transparent,
@@ -49,7 +48,6 @@ class FavoritesScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30),
-
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -68,9 +66,9 @@ class FavoritesScreen extends StatelessWidget {
                   },
                 ),
               )
-              ],
-            ),
+            ],
           ),
+        ),
       ),
     );
   }
@@ -80,15 +78,12 @@ class FavoritesScreen extends StatelessWidget {
     final data = await Data.getJson();
     final producers = data["producers"];
 
-    for(final producer in producers.keys) {
-
+    for (final producer in producers.keys) {
       final prod = Producer.fromJson(producers[producer]);
 
       children.add(OrgsStoresCard(
-        action: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ProducerDetailsScreen(producer: prod)),
-        ),
+        action: () =>
+            Navigator.pushNamed(context, 'producer-details', arguments: prod),
         img: prod.logo,
         distance: prod.distance,
         title: prod.name,
